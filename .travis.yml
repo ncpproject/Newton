@@ -10,8 +10,8 @@ os:
   - osx  
 
 before_install:
- - if [ $TRAVIS_OS_NAME = osx ]; then sudo apt-get update -y ; fi
- - if [ $TRAVIS_OS_NAME = osx ]; then sudo apt-get install -y fakeroot ; fi
+ - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get update -y ; fi
+ - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install -y fakeroot ; fi
  - chmod +x gradlew
  
 script:
