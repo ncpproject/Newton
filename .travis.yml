@@ -8,7 +8,9 @@ addons:
 jdk:
   - openjdk14
   
+before_install:
+ - chmod +x gradlew
+ 
 script:
- - chmod 775 gradlew
  - ./gradlew check
  - ./gradlew jpackage
