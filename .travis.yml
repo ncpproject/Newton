@@ -9,5 +9,6 @@ jdk:
   - openjdk14
   
 script:
+ - chmod 775 gradlew
  - ./gradlew check
  - ./gradlew jpackage
