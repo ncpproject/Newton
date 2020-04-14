@@ -9,6 +9,8 @@ jdk:
   - openjdk14
   
 before_install:
+ - sudo apt-get update -y
+ - sudo apt-get install -y fakeroot
  - chmod +x gradlew
  
 script:
