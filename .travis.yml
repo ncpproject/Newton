@@ -8,6 +8,7 @@ jdk:
 os:
   - linux
   - osx  
+  - windows
 
 before_install:
  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get update -y ; fi
@@ -15,5 +16,5 @@ before_install:
  - chmod +x gradlew
  
 script:
- - ./gradlew check
- - ./gradlew jpackage
+ - gradle check
+ - gradle jpackage
