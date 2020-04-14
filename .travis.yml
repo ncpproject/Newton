@@ -9,4 +9,5 @@ jdk:
   - openjdk14
   
 script:
+ - ./gradlew check
  - ./gradlew jpackage
