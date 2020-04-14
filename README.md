@@ -1,4 +1,5 @@
 # Newton
+[![Build Status](https://travis-ci.com/ncpproject/Newton.svg?branch=master)](https://travis-ci.com/ncpproject/Newton)
 
 [Official Website](https://newtoncoin.site) , [Support](mailto:support@newtoncoin.site)  
 ![img](package/Newton_splash.png)
