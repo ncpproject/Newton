@@ -9,11 +9,11 @@ matrix:
     include:
      - os: linux
          env:
-            - MATRIX_EVAL="Ubuntu"
+            - MATRIX_EVAL="OS=Ubuntu"
         
     - os: osx 
         env:
-            - MATRIX_EVAL="OSX"
+            - MATRIX_EVAL="OS=OSX"
     
 before_install:
  - sudo apt-get update -y
