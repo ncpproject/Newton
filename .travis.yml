@@ -9,18 +9,20 @@ os:
 jdk:
   - openjdk14
   
-env:
-  matrix:
-     - OS=ubuntu DIST=bionic
-     - OS=OSX
+matrix:
+    include:
+     - os: linux
+         env:
+            - MATRIX_EVAL="Ubuntu"
+        
+    - os: osx 
+        env:
+            - MATRIX_EVAL="OSX"
     
 before_install:
- - if [ $"$OS" = ubuntu && "$DIST" = bionic ]; then sudo apt-get update -y ; fi
- - if [ $"$OS" = ubuntu && "$DIST" = bionic ]; sudo apt-get install -y fakeroot ; fi
- - if [ $"$OS" = ubuntu && "$DIST" = bionic ]; chmod +x gradlew ; fi
- - if [ $"$OS" = OSX ]; brew update ; fi
- - if [ $"$OS" = OSX ]; brew tap adoptopenjdk/openjdk ; fi
- - if [ $"$OS" = OSX ]; brew cask install adoptopenjdk14 ; fi
+ - sudo apt-get update -y
+ - sudo apt-get install -y fakeroot
+ - chmod +x gradlew
  
 script:
  - eval $MATRIX_EVAL
