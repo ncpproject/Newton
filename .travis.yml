@@ -1,18 +1,28 @@
 dist: bionic
 
 language: java
-addons:
-  apt:
-    packages:
-      - gradle
+
+os:
+  - linux
+  - osx
+
 jdk:
   - openjdk14
   
+env:
+  matrix:
+     - OS=ubuntu DIST=bionic
+     - OS=OSX
+    
 before_install:
- - sudo apt-get update -y
- - sudo apt-get install -y fakeroot
- - chmod +x gradlew
+ - if [ $"$OS" = ubuntu && "$DIST" = bionic ]; then sudo apt-get update -y ; fi
+ - if [ $"$OS" = ubuntu && "$DIST" = bionic ]; sudo apt-get install -y fakeroot ; fi
+ - if [ $"$OS" = ubuntu && "$DIST" = bionic ]; chmod +x gradlew ; fi
+ - if [ $"$OS" = OSX ]; brew update ; fi
+ - if [ $"$OS" = OSX ]; brew tap adoptopenjdk/openjdk ; fi
+ - if [ $"$OS" = OSX ]; brew cask install adoptopenjdk14 ; fi
  
 script:
+ - eval $MATRIX_EVAL
  - ./gradlew check
  - ./gradlew jpackage
