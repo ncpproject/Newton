@@ -1,0 +1,14 @@
+version: 1.0.{build}
+environment:
+  JDK: C:\Program Files\Java\jdk14
+build_script:
+- gradlew jpackage
+deploy:
+- provider: GitHub
+  release: Newton-v$(appveyor_build_version)
+  auth_token:
+    secure: UUbCGIF4aAb+8YcVkN9DqKaqdlvFQ4wIhF8Cac9oTXes6z5de29/TQWmoqgeyvyt
+      artifact: jpackage/Newton-0.0.1-x64.msi
+  repository: ncpproject/Newton
+  on:
+    APPVEYOR_REPO_TAG: true
