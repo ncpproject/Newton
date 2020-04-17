@@ -8,7 +8,7 @@ deploy:
   release: Newton-v$(appveyor_build_version)
   auth_token:
     secure: UUbCGIF4aAb+8YcVkN9DqKaqdlvFQ4wIhF8Cac9oTXes6z5de29/TQWmoqgeyvyt
-      artifact: jpackage/Newton-0.0.1-x64.msi
+      artifact: /build/jpackage/Newton-0.0.1-x64.msi
   repository: ncpproject/Newton
   on:
     APPVEYOR_REPO_TAG: true
