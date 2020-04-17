@@ -17,3 +17,19 @@ before_install:
 script:
  - ./gradlew check
  - ./gradlew jpackage
+before_deploy:
+  - cd build && cd jpackage
+  - if [ $TRAVIS_OS_NAME = linux ]; then mv newton_0.0.1_ubuntu_amd64.deb Newton-${TRAVIS_TAG}-Ubuntu-amd64.deb ; fi
+  - if [ $TRAVIS_OS_NAME = osx ]; then mv Newton-0.0.1-MacOS.dmg Newton-${TRAVIS_TAG}-MacOS.dmg ; fi
+  
+deploy:
+  provider: releases
+  api_key:
+    secure: "svVXEqnxgnaTdLFkUaifKX7wvArNocs9RUtEHhwyN3l1P75mHu2l+BDQ2oR8VfVQJWAvUAFWE67GCePR14zYZuyCZg4oK6Mfw6EmKPTUM6V3d+jRtxrwlSfptKY2Wxp83U/+Ac0dykSQsCna/w2fW/LaHv9Mlh6oEfLGzJcZMU9o7GUFGfHrwk94Vhu2+67CbDmbPDrezZP0CbjXIE22o50bOIOmf7+4RGyKKylIKEovHEVMD95vmPewXmls4mpk4ZLXkPjcaVN+n1zNnaWzvB272usJ0dIBSx6BgSFkq09Fo9SukGPImoytCs0MDgccdyZ/vohyx5bFPB35UViB55eXAI2RcbjVRPrJtMtraVsimMElUoRNHGovNAG+x5LCbZ269Z/jCSD88d1QZFBiFj2ATq+x+BwOL0SxgoqDmVEgdcqIgtFG0bVEX6ajNn5SbHeo0t3C2Nl/HJaU8e/R/RJNGyS3E05ZUdv0HIZtZh7NtI6gnF22ttN3t+omvcIrBYQ71+2muls214KQRAk9mh+7/YZRn5gZaoz+plOZBCjlDVnCCvNmFBzXVko+WNGtY3NoAk5SVGQ92zcqjk+7HmtKp/iMAbV2LpHrqKGpzx9iPB4TfMLoQ9vwqIaEMG+RYwOnRF9oyeDCIBfG2j8lH6PeJNJB+6s/I4AqvtdcYpo="
+  file:
+    - Newton-${TRAVIS_TAG}-Ubuntu-amd64.deb
+    - Newton-${TRAVIS_TAG}-MacOS.dmg
+  skip_cleanup: true
+  on:
+    repo: ncpproject/Newton
+    tags: true
